@@ -52,7 +52,13 @@ public class Adventure extends AdventureStub {
 	 * the program should continue as usual.
 	 */
 	public void executeQuitCommand() {
-		super.executeQuitCommand(); // Replace with your code
+		System.out.print("Are you sure (Y/N)? ");
+		
+		if ( scan.nextLine().toUpperCase().equals("Y")) {
+			// exit
+			System.out.println("ok, bye bye");
+			System.exit(0);
+		}
 	}
 
 	/* Method: executeHelpCommand() */
