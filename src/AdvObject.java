@@ -7,7 +7,6 @@
 
 import java.io.*;
 import java.util.Scanner;
-
 /* Class: AdvObject */
 /**
  * This class defines an object in the Adventure game.  An object is
@@ -34,7 +33,7 @@ public class AdvObject extends AdvObjectStub {
  * @return The name of the object
  */
 	public String getName() {
-		return super.getName(); // Replace with your code
+		return this.name; // Replace with your code
 	}
 
 /* Method: getDescription() */
@@ -47,7 +46,7 @@ public class AdvObject extends AdvObjectStub {
  * @return The description of the object
  */
 	public String getDescription() {
-		return super.getDescription(); // Replace with your code
+		return this.desc; // Replace with your code
 	}
 
 
@@ -59,7 +58,7 @@ public class AdvObject extends AdvObjectStub {
  * @return The room number in which the object initially resides
  */
 	public int getInitialLocation() {
-		return super.getInitialLocation(); // Replace with your code
+		return this.roomNumber; // Replace with your code
 	}
 
 	/* Method: readFromFile(scan) */
@@ -75,11 +74,36 @@ public class AdvObject extends AdvObjectStub {
 	 * @return the object if an object is successfully read; null at end of file
 	 */
 	public static AdvObject readFromFile(Scanner scan) {
-		return AdvObjectStub.readFromFile(scan); // Replace with your code
-	}
 
+		if (!scan.hasNext()) {
+			H.p("end of file");
+			return null;
+		}
+	
+		AdvObject o = new AdvObject();
+		o.name = scan.nextLine();
+		o.desc = scan.nextLine();
+		o.roomNumber = scan.nextInt();
+		
+		// clean up white space
+		scan.nextLine();
+		if (scan.hasNext()) {
+			scan.nextLine();
+		}
+
+		return o; // Replace with your code
+	}
+	
+	
+	public String toString() {
+		return String.format("name: %s, desc: %s, inloc: %d", this.name, this.desc, this.roomNumber);
+	}
 /* Private instance variables */
 	// Add your own instance variables here
+	private String name;
+	private String desc;
+	private int roomNumber;
+	
 
 }
 
