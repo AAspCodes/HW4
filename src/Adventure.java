@@ -67,7 +67,24 @@ public class Adventure extends AdventureStub {
 	 * the user.
 	 */
 	public void executeHelpCommand() {
-		super.executeHelpCommand(); // Replace with your code
+		Scanner hScan;
+		
+		// try to read the help file into the scanner object.
+		try {
+			hScan = new Scanner(new File("help.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+		
+		// print out every line.
+		while (hScan.hasNext()) {
+			System.out.println(hScan.nextLine());
+		}
+		
+		hScan.close();
+		
 	}
 
 	/* Method: executeLookCommand() */

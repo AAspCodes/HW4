@@ -1,0 +1,12 @@
+List of all possible commands:
+Quit:
+	Quit the game.
+	
+Help:
+	display this help information.
+
+Look:
+	Display the current room's description and contents.
+	
+and more....
+
