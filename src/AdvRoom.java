@@ -36,7 +36,7 @@ public class AdvRoom extends AdvRoomStub {
 	 * @return The room number
 	 */
 	public int getRoomNumber() {
-		return super.getRoomNumber(); // Replace with your code
+		return roomNumber; // Replace with your code
 	}
 
 	/* Method: getName() */
@@ -47,7 +47,7 @@ public class AdvRoom extends AdvRoomStub {
 	 * @return The room name
 	 */
 	public String getName() {
-		return super.getName(); // Replace with your code
+		return name; // Replace with your code
 	}
 
 	/* Method: getDescription() */
@@ -59,7 +59,7 @@ public class AdvRoom extends AdvRoomStub {
 	 * @return An array of strings giving the long description of the room
 	 */
 	public String[] getDescription() {
-		return super.getDescription(); // Replace with your code
+		return desc; // Replace with your code
 	}
 
 	/* Method: addObject(obj) */
@@ -133,7 +133,7 @@ public class AdvRoom extends AdvRoomStub {
 	 *            The new state of the "visited" flag
 	 */
 	public void setVisited(boolean flag) {
-		super.setVisited(flag); // Replace with your code
+		beenVisited = flag; // Replace with your code
 	}
 
 	/* Method: hasBeenVisited() */
@@ -144,7 +144,7 @@ public class AdvRoom extends AdvRoomStub {
 	 * @return true if the room has been visited; false otherwise
 	 */
 	public boolean hasBeenVisited() {
-		return super.hasBeenVisited(); // Replace with your code
+		return beenVisited; // Replace with your code
 	}
 
 	/* Method: getMotionTable() */
@@ -157,7 +157,7 @@ public class AdvRoom extends AdvRoomStub {
 	 * @return The array of motion table entries associated with this room
 	 */
 	public AdvMotionTableEntry[] getMotionTable() {
-		return super.getMotionTable(); // Replace with your code
+		return motionTable; // Replace with your code
 	}
 
 	/* Method: readFromFile(rd) */
@@ -173,9 +173,54 @@ public class AdvRoom extends AdvRoomStub {
 	 * @return a room if successfully read; null if at end of file
 	 */
 	public static AdvRoom readFromFile(Scanner scan) {
-		return AdvRoomStub.readFromFile(scan); // Replace with your code
+		if (!scan.hasNext()) {
+			H.p("file ended");
+			return null;
+		}
+		
+		AdvRoom r = new AdvRoom();
+		r.roomNumber = scan.nextInt();
+		H.p(scan.nextLine());
+		r.name = scan.nextLine();
+		
+		List<String> newDesc = new ArrayList<String>();
+		String line;
+		while (!(line = scan.nextLine()).equals("-----")) {
+			newDesc.add(line);
+		}
+		r.desc = newDesc.toArray(new String[newDesc.size()]);
+		
+		r.beenVisited = false;
+		
+		List<AdvMotionTableEntry> motionTable = new ArrayList<AdvMotionTableEntry>();
+		while ((scan.hasNext()) && !(line = scan.nextLine()).equals("")) {
+			
+			String[] lineSplit = line.split(" ");
+			
+			String[] secondSplit = lineSplit[lineSplit.length - 1].split("/");
+			
+			String name = lineSplit[0];
+			int roomNum = Integer.parseInt(secondSplit[0]);
+			
+			String key;
+			try {
+				key = secondSplit[1];
+			} catch (ArrayIndexOutOfBoundsException e) {
+				key = null;
+			}
+			
+			AdvMotionTableEntry entry = new AdvMotionTableEntry(name, roomNum, key);
+			motionTable.add(entry);
+		}
+		r.motionTable = motionTable.toArray(new AdvMotionTableEntry[motionTable.size()]);
+			
+		return r; // Replace with your code
 	}
 
 	/* Private instance variables */
-	// Add your own instance variables here
+	private String name;
+	private String[] desc;
+	private int roomNumber;
+	private boolean beenVisited;
+	private AdvMotionTableEntry[] motionTable;
 }
