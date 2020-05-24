@@ -71,7 +71,7 @@ public class AdvRoom extends AdvRoomStub {
 	 *            AdvObject to be added
 	 */
 	public void addObject(AdvObject obj) {
-		super.addObject(obj);
+		objectList.add(obj);
 	}
 
 	/* Method: removeObject(obj) */
@@ -83,7 +83,7 @@ public class AdvRoom extends AdvRoomStub {
 	 *            AdvObject to be removed
 	 */
 	public void removeObject(AdvObject obj) {
-		super.removeObject(obj);
+		objectList.remove(obj);
 	}
 
 	/* Method: containsObject(obj) */
@@ -96,7 +96,7 @@ public class AdvRoom extends AdvRoomStub {
 	 * @return true if the object is in the room, and false otherwise
 	 */
 	public boolean containsObject(AdvObject obj) {
-		return super.containsObject(obj);
+		return objectList.contains(obj);
 	}
 
 	/* Method: getObjectCount() */
@@ -107,7 +107,7 @@ public class AdvRoom extends AdvRoomStub {
 	 * @return The number of objects in the room
 	 */
 	public int getObjectCount() {
-		return super.getObjectCount();
+		return objectList.size();
 	}
 
 	/* Method: getObject(index) */
@@ -118,7 +118,7 @@ public class AdvRoom extends AdvRoomStub {
 	 * @return The AdvObject at the specified index position
 	 */
 	public AdvObject getObject(int index) {
-		return super.getObject(index);
+		return objectList.remove(index);
 	}
 
 	/* Method: setVisited(flag) */
@@ -223,4 +223,5 @@ public class AdvRoom extends AdvRoomStub {
 	private int roomNumber;
 	private boolean beenVisited;
 	private AdvMotionTableEntry[] motionTable;
+	private List<AdvObject> objectList = new ArrayList<AdvObject>();
 }
