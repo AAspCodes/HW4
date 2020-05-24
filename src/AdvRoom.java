@@ -26,7 +26,7 @@ import java.util.*;
  * the initialized data structure.
  */
 
-public class AdvRoom extends AdvRoomStub {
+public class AdvRoom{
 
 	/* Method: getRoomNumber() */
 	/**
