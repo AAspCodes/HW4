@@ -30,7 +30,9 @@ public abstract class AdvCommand {
 
 	/** The predefined entry for the DROP command */
 	public static final AdvCommand DROP = new DropCommand();
-
+	
+	public static final AdvCommand HELP = new HelpCommand();
+	
 	/* Abstract method: execute(game, obj) */
 	/**
 	 * Executes this command in the context of the specified adventure game. The
