@@ -217,6 +217,20 @@ public class AdvRoom{
 		return r; // Replace with your code
 	}
 
+	
+	public void look() {
+		for (String line: this.getDescription()) {
+			System.out.println(line);
+		}
+		if (this.getObjectCount() > 0) {
+			
+			for (AdvObject obj: this.objectList) {
+				System.out.println("I see " + obj.getDescription());
+			}
+		}
+	
+	}
+	
 	/* Private instance variables */
 	private String name;
 	private String[] desc;
