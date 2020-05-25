@@ -31,6 +31,24 @@ public class Adventure extends AdventureStub {
 	 */
 	public static void main(String[] args) {
 		AdventureStub.main(args); // Replace with your code
+	
+	/**
+	 * Return hash map of all commands.
+	 * 
+	 * @return 
+	 * 		HashMap<String,AdvCommand> of all commands.
+	 */
+	private static Map<String, AdvCommand> createCommandMap() {
+		Map<String,AdvCommand> commands = new HashMap<String, AdvCommand>();
+		commands.put("QUIT", AdvCommand.QUIT);
+		commands.put("LOOK", AdvCommand.LOOK);
+		commands.put("INVENTORY", AdvCommand.INVENTORY);
+		commands.put("TAKE", AdvCommand.TAKE);
+		commands.put("DROP", AdvCommand.DROP);
+		commands.put("HELP", AdvCommand.HELP);
+		return commands;
+	}
+	
 	}
 
 	/* Method: executeMotionCommand(direction) */
@@ -131,4 +149,5 @@ public class Adventure extends AdventureStub {
 
 	/* Private instance variables */
 	// Add your own instance variables here
+	private Map<String, AdvCommand> commands;
 }
