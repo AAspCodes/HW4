@@ -325,6 +325,9 @@ public class Adventure extends AdventureStub {
 	}
 
 	/* Private instance variables */
-	// Add your own instance variables here
+	
+	private AdvRoom room;
+	private List<AdvRoom> rooms;
+	private Map<String,AdvObject> inventory;
 	private Map<String, AdvCommand> commands;
 }
