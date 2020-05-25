@@ -54,6 +54,28 @@ public class Adventure extends AdventureStub {
 		return commands;
 	}
 	
+	
+	private static List<AdvObject> loadObjects(String input) {
+		Scanner objScanner;
+		
+		// load rooms Data into scanner
+		try {
+			objScanner = new Scanner(new File(input + "Objects.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(1);
+			return null;
+		}
+		
+		List<AdvObject> objects = new ArrayList<AdvObject>();
+		AdvObject newObject;
+		
+		while ((newObject = AdvObject.readFromFile(objScanner)) != null) {
+			objects.add(newObject);
+		}
+		
+		return objects;
 	}
 
 	/* Method: executeMotionCommand(direction) */
