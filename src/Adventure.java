@@ -129,6 +129,26 @@ public class Adventure extends AdventureStub {
 		
 		return objects;
 	}
+	
+	
+	/**
+	 * Construct an Adventure Object.
+	 * 
+	 * @param rooms
+	 * 		 ArrayList of AdvRoom objects.
+	 * @param objects
+	 * 		 ArrayList of AdvObject objects.
+	 * @param commands
+	 * 		HashMap of AdvCommand subclass Objects
+	 */
+	private Adventure(List<AdvRoom> rooms, Map<String, AdvCommand> commands) {
+		this.rooms = rooms;
+		this.commands = commands;
+		setRoom(1);
+		
+	}
+	
+	
 
 	/* Method: executeMotionCommand(direction) */
 	/**
