@@ -161,6 +161,42 @@ public class Adventure extends AdventureStub {
 			parseInput(scan.nextLine().toUpperCase());
 		}
 	}
+	
+	private void parseInput(String input) {
+		if (input.equals("")) {
+			return;
+		}
+		// check if a direction
+		if (go(input)) {
+			return;
+		}
+		
+		String[] splitInput = input.split(" ");
+		
+		if (splitInput.length > 2) {
+			System.out.println("invalid command");
+			return;
+		}
+		
+		String verb = splitInput[0];
+		
+		if (splitInput.length > 1) {
+			// check for object
+			String objectName = splitInput[1];
+		}
+		
+		// check if a command
+		if (command(verb)) {
+			return;
+		}
+		
+// damn take and give...
+		
+		// else print "invalid command"
+		// couldn't parse the input
+		System.out.println("invalid input");
+	}
+	
 	private boolean go(String msg) {	
 		for ( AdvMotionTableEntry entry: room.getMotionTable()) {
 			if (msg.equals(entry.getDirection())) {
