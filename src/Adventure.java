@@ -36,6 +36,14 @@ public class Adventure extends AdventureStub {
 		String input = scan.nextLine();
 		input = input.substring(0,1).toUpperCase() + input.substring(1,input.length()).toLowerCase();
 		
+		
+		
+		
+		Adventure ad = new Adventure(
+								loadRooms(input),
+								createCommandMap()
+								);
+		
 	
 	/**
 	 * Return hash map of all commands.
@@ -132,7 +140,20 @@ public class Adventure extends AdventureStub {
 	 */
 	public void executeMotionCommand(String direction) {
 		super.executeMotionCommand(direction); // Replace with your code
+	
+	private void setRoom(int roomNum) {
+		if (roomNum == 0) {
+			// game ended
+			System.out.println("Thank you for playing.");
+			System.exit(0);
+			return;
+		}
+		
+		
+		room = rooms.get(roomNum);
 	}
+	
+
 
 	/* Method: executeQuitCommand() */
 	/**
