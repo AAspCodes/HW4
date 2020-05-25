@@ -161,6 +161,18 @@ public class Adventure extends AdventureStub {
 			parseInput(scan.nextLine().toUpperCase());
 		}
 	}
+	private boolean go(String msg) {	
+		for ( AdvMotionTableEntry entry: room.getMotionTable()) {
+			if (msg.equals(entry.getDirection())) {
+				(new AdvMotionCommand(msg)).execute(this, null);
+				return true;
+			}
+		}
+		
+		// no match was found
+		return false;
+	}
+	
 
 	/* Method: executeMotionCommand(direction) */
 	/**
@@ -172,6 +184,27 @@ public class Adventure extends AdventureStub {
 	 */
 	public void executeMotionCommand(String direction) {
 		super.executeMotionCommand(direction); // Replace with your code
+		int roomNum = 0;
+		
+		for ( AdvMotionTableEntry entry: room.getMotionTable()) {
+			// if direction is valid
+			if (direction.equals(entry.getDirection())) {
+				
+				if (entry.getKeyName() != null && inventory.get(entry.getKeyName()) == null) {
+						// key was needed, and you don't have the key
+						continue;
+				} else {
+					// either a key was needed, and you had it, or no key was needed
+					roomNum = entry.getDestinationRoom();
+					break;
+				}
+			}
+		}
+		
+		setRoom(roomNum);
+		command("LOOK");
+		
+	}
 	
 	private void setRoom(int roomNum) {
 		if (roomNum == 0) {
