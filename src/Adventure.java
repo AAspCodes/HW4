@@ -44,6 +44,11 @@ public class Adventure extends AdventureStub {
 								createCommandMap()
 								);
 		
+		ad.mainLoop();
+		
+	}
+	
+	
 	
 	/**
 	 * Return hash map of all commands.
@@ -149,6 +154,13 @@ public class Adventure extends AdventureStub {
 	}
 	
 	
+	
+	private void mainLoop() {
+		command("LOOK");
+		while (true) {
+			parseInput(scan.nextLine().toUpperCase());
+		}
+	}
 
 	/* Method: executeMotionCommand(direction) */
 	/**
