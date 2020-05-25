@@ -203,7 +203,7 @@ public class Adventure extends AdventureStub {
 	 * of the room and its contents.
 	 */
 	public void executeLookCommand() {
-		super.executeLookCommand(); // Replace with your code
+		this.room.look();
 	}
 
 	/* Method: executeInventoryCommand() */
