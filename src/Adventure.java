@@ -55,6 +55,50 @@ public class Adventure extends AdventureStub {
 	}
 	
 	
+	/**
+	 * Load the the AdvRoom data from the {input}Rooms.txt file into an ArrayList of AdvRoom objects.
+	 * return the ArrayList.
+	 * 
+	 * @param input
+	 * 		The string input by the user for which game version they want to play.
+	 * @return
+	 * 		ArrayList<AdvRoom> of Rooms
+	 */
+	private static List<AdvRoom> loadRooms(String input) {
+		Scanner roomScanner;
+		
+		// load rooms Data into scanner
+		try {
+			roomScanner = new Scanner(new File(input + "Rooms.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(1);
+			return null;
+		}
+		
+		List<AdvRoom> rooms = new ArrayList<AdvRoom>();
+		// make index 0 null so that the room numbers line up with their index.
+		rooms.add(null);
+		
+		
+		AdvRoom newRoom;
+		
+		while ((newRoom = AdvRoom.readFromFile(roomScanner)) != null) {
+			rooms.add(newRoom);
+		}
+		
+		
+		List<AdvObject> objects = loadObjects(input);
+		for (AdvObject obj: objects) {
+			AdvRoom room = rooms.get(obj.getInitialLocation());
+			room.addObject(obj);
+		}
+		
+		
+		return rooms;
+	}
+	
 	private static List<AdvObject> loadObjects(String input) {
 		Scanner objScanner;
 		
