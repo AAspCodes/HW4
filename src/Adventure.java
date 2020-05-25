@@ -239,7 +239,6 @@ public class Adventure extends AdventureStub {
 	 *            The string indicating the direction of motion
 	 */
 	public void executeMotionCommand(String direction) {
-		super.executeMotionCommand(direction); // Replace with your code
 		int roomNum = 0;
 		
 		for ( AdvMotionTableEntry entry: room.getMotionTable()) {
