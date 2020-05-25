@@ -30,7 +30,12 @@ public class Adventure extends AdventureStub {
 	 * Runs the adventure program
 	 */
 	public static void main(String[] args) {
-		AdventureStub.main(args); // Replace with your code
+		System.out.print("What will be you adventure today? ");
+		
+		// get game choice
+		String input = scan.nextLine();
+		input = input.substring(0,1).toUpperCase() + input.substring(1,input.length()).toLowerCase();
+		
 	
 	/**
 	 * Return hash map of all commands.
