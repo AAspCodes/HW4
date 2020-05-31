@@ -397,7 +397,7 @@ public class Adventure extends AdventureStub {
 	
 	private AdvRoom room;
 	private List<AdvRoom> rooms;
-	private List<AdvObject> inventory;
+	private List<AdvObject> inventory = new ArrayList<AdvObject>();
 	private Map<String, AdvCommand> commands;
 	private Map<String, AdvObject> objectRefMap = new HashMap<String,AdvObject>();
 }
