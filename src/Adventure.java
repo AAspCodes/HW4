@@ -38,9 +38,10 @@ public class Adventure extends AdventureStub {
 		
 		
 		
-		
+ 
 		Adventure ad = new Adventure(
 								loadRooms(input),
+								loadObjects(input),
 								createCommandMap()
 								);
 		
@@ -100,15 +101,7 @@ public class Adventure extends AdventureStub {
 		while ((newRoom = AdvRoom.readFromFile(roomScanner)) != null) {
 			rooms.add(newRoom);
 		}
-		
-		
-		List<AdvObject> objects = loadObjects(input);
-		for (AdvObject obj: objects) {
-			AdvRoom room = rooms.get(obj.getInitialLocation());
-			room.addObject(obj);
-		}
-		
-		
+
 		return rooms;
 	}
 	
@@ -145,10 +138,20 @@ public class Adventure extends AdventureStub {
 	 * @param commands
 	 * 		HashMap of AdvCommand subclass Objects
 	 */
-	private Adventure(List<AdvRoom> rooms, Map<String, AdvCommand> commands) {
+	private Adventure(List<AdvRoom> rooms,List<AdvObject> objects, Map<String, AdvCommand> commands) {
+		
+		for (AdvObject obj: objects) {
+			AdvRoom room = rooms.get(obj.getInitialLocation());
+			room.addObject(obj);
+		}
 		this.rooms = rooms;
-		this.commands = commands;
+		
 		setRoom(1);
+		
+		objects.forEach((obj) -> this.objectRefMap.put(obj.getName(), obj));
+		
+		this.commands = commands;
+
 	}
 	
 	
@@ -181,6 +184,23 @@ public class Adventure extends AdventureStub {
 		if (splitInput.length > 1) {
 			// check for object
 			String objectName = splitInput[1];
+			// check for give/ take commands
+			switch (verb) {
+			case "DROP":
+				if (objectRefMap.containsKey(objectName)) {
+					AdvObject obj = objectRefMap.get(objectName);
+					command("DROP", obj);
+				}
+				break;
+			case "TAKE":
+				if (objectRefMap.containsKey(objectName)) {
+					AdvObject obj = objectRefMap.get(objectName);
+					command("TAKE", obj);
+				}
+			}
+			return; // the user enter two words,
+			// either the first word was not give or take,
+			// or the second word was not a valid object name
 		}
 		
 		// check if a command
@@ -240,7 +260,8 @@ public class Adventure extends AdventureStub {
 			// if direction is valid
 			if (direction.equals(entry.getDirection())) {
 				
-				if (entry.getKeyName() != null && inventory.get(entry.getKeyName()) == null) {
+				if (entry.getKeyName() != null && !haveKey(entry.getKeyName())){
+				
 						// key was needed, and you don't have the key
 						continue;
 				} else {
@@ -254,6 +275,19 @@ public class Adventure extends AdventureStub {
 		setRoom(roomNum);
 		command("LOOK");
 		
+	}
+	/**
+	 * this is a temporary method, it should be replaced
+	 * @param keyname
+	 * @return
+	 */
+	private boolean haveKey(String keyName) {
+		for (AdvObject obj: inventory) {
+			if ( obj.getName().equals(keyName)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	private void setRoom(int roomNum) {
@@ -380,6 +414,7 @@ public class Adventure extends AdventureStub {
 	
 	private AdvRoom room;
 	private List<AdvRoom> rooms;
-	private List<AdvObject> inventory;
+	private List<AdvObject> inventory = new ArrayList<AdvObject>();
 	private Map<String, AdvCommand> commands;
+	private Map<String, AdvObject> objectRefMap = new HashMap<String,AdvObject>();
 }
