@@ -152,9 +152,7 @@ public class Adventure extends AdventureStub {
 		setRoom(1);
 		
 		this.commands = commands;
-
 	}
-	
 	
 	
 	private void mainLoop() {
