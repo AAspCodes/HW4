@@ -382,6 +382,7 @@ public class Adventure extends AdventureStub {
 	public void executeTakeCommand(AdvObject obj) {
 		if (obj == null) {
 			System.out.println("What would you like to take?");
+			return;
 		}
 		if (this.room.containsObject(obj)) {
 			this.inventory.add(obj);
