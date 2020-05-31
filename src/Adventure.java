@@ -149,6 +149,8 @@ public class Adventure extends AdventureStub {
 		this.rooms = rooms;
 		this.commands = commands;
 		setRoom(1);
+		loadObjects("small").forEach((obj) -> this.objectRefMap.put(obj.getName(), obj));
+
 	}
 	
 	
@@ -181,6 +183,23 @@ public class Adventure extends AdventureStub {
 		if (splitInput.length > 1) {
 			// check for object
 			String objectName = splitInput[1];
+			// check for give/ take commands
+			switch (verb) {
+			case "DROP":
+				if (objectRefMap.containsKey(objectName)) {
+					AdvObject obj = objectRefMap.get(objectName);
+					command("GIVE", obj);
+				}
+				break;
+			case "TAKE":
+				if (objectRefMap.containsKey(objectName)) {
+					AdvObject obj = objectRefMap.get(objectName);
+					command("TAKE", obj);
+				}
+			}
+			return; // the user enter two words,
+			// either the first word was not give or take,
+			// or the second word was not a valid object name
 		}
 		
 		// check if a command
@@ -380,4 +399,5 @@ public class Adventure extends AdventureStub {
 	private List<AdvRoom> rooms;
 	private List<AdvObject> inventory;
 	private Map<String, AdvCommand> commands;
+	private Map<String, AdvObject> objectRefMap = new HashMap<String,AdvObject>();
 }
