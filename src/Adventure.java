@@ -139,7 +139,7 @@ public class Adventure extends AdventureStub {
 	 * 		HashMap of AdvCommand subclass Objects
 	 */
 	private Adventure(List<AdvRoom> rooms,List<AdvObject> objects, Map<String, AdvCommand> commands) {
-		
+		// put object in their rooms
 		for (AdvObject obj: objects) {
 			AdvRoom room = rooms.get(obj.getInitialLocation());
 			room.addObject(obj);
