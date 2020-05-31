@@ -399,12 +399,16 @@ public class Adventure extends AdventureStub {
 	 *            The AdvObject you want to drop
 	 */
 	public void executeDropCommand(AdvObject obj) {
+//		if(obj == null) {
+//			System.out.println("Please pick an item to drop.");
+//			executeDropCommand(obj);
+//		}
 		if (this.inventory.contains(obj)) {
 			this.inventory.remove(obj);
 			this.room.addObject(obj);
 			System.out.println("You have dropped the " + obj.getName() + ".");
 		} else {
-			System.out.println("Cannot drop the " + obj.getName() + ".");
+			System.out.println("Cannot drop the object.");
 		}
 		
 
