@@ -119,7 +119,6 @@ public class Adventure extends AdventureStub {
 		try {
 			objScanner = new Scanner(new File(input + "Objects.txt"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 			return null;
@@ -150,17 +149,12 @@ public class Adventure extends AdventureStub {
 		this.rooms = rooms;
 		this.commands = commands;
 		setRoom(1);
-//		this.inventory = new HashMap<String,AdvObject>();
 	}
 	
 	
 	
 	private void mainLoop() {
-		command("LOOK");
-//		List<AdvObject> objs = loadObjects("Small");
-//		AdvObject obj = objs.get(1);
-//		inventory.put(obj.getName(), obj);
-		
+		command("LOOK");		
 		while (true) {
 			parseInput(scan.nextLine().toUpperCase());
 		}
@@ -335,8 +329,7 @@ public class Adventure extends AdventureStub {
 			for (int i = 0; i < this.inventory.size(); i++) {
 				System.out.println(inventory.get(i));
 			}
-//		if (inventory.size() > 0) {
-//			inventory.forEach((k,v) -> System.out.println( k + ": "+ v));
+
 		} else {
 			System.out.println("You are empty-handed.");
 		}
@@ -358,7 +351,7 @@ public class Adventure extends AdventureStub {
 		} else {
 			System.out.println("Cannot take object.");
 		}
-//		super.executeTakeCommand(obj); // Replace with your code
+
 	}
 
 	/* Method: executeDropCommand(obj) */
@@ -378,7 +371,7 @@ public class Adventure extends AdventureStub {
 			System.out.println("Cannot drop the " + obj.getName() + ".");
 		}
 		
-//		super.executeDropCommand(obj); // Replace with your code
+
 	}
 
 	/* Private instance variables */
