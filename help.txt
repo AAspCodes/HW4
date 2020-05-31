@@ -1,12 +1,25 @@
 List of all possible commands:
-Quit:
+
+QUIT:
 	Quit the game.
 	
-Help:
-	display this help information.
+HELP:
+	Display this help information.
 
-Look:
+LOOK:
 	Display the current room's description and contents.
 	
-and more....
+TAKE (Item):
+	Takes the item and places it in your inventory.
+
+DROP (Item):
+	Drops an inventory item into the current room.
+
+INVENTORY:
+	Lists all the items in your inventory.
+	
+NORTH, EAST, SOUTH, WEST, UP, DOWN, IN, OUT:
+	Move in the corresponding direction.
+	
+	
 
