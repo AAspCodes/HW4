@@ -257,7 +257,8 @@ public class Adventure extends AdventureStub {
 			// if direction is valid
 			if (direction.equals(entry.getDirection())) {
 				
-				if (entry.getKeyName() != null && inventory.get(entry.getKeyName()) == null) {
+				if (entry.getKeyName() != null && !haveKey(entry.getKeyName())){
+				
 						// key was needed, and you don't have the key
 						continue;
 				} else {
@@ -271,6 +272,19 @@ public class Adventure extends AdventureStub {
 		setRoom(roomNum);
 		command("LOOK");
 		
+	}
+	/**
+	 * this is a temporary method, it should be replaced
+	 * @param keyname
+	 * @return
+	 */
+	private boolean haveKey(String keyName) {
+		for (AdvObject obj: inventory) {
+			if ( obj.getName().equals(keyName)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	private void setRoom(int roomNum) {
