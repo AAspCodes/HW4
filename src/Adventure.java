@@ -202,12 +202,13 @@ public class Adventure extends AdventureStub {
 			return; // the user enter two words,
 			// either the first word was not give or take,
 			// or the second word was not a valid object name
+		} else if (command(verb)) {
+				return;
 		}
 		
+		
 		// check if a command
-		if (command(verb)) {
-			return;
-		}
+
 		
 // damn take and give...
 		
