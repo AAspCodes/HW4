@@ -12,7 +12,7 @@ import java.util.*;
  * This class is the main program class for the Adventure game.
  */
 
-public class Adventure extends AdventureStub {
+public class Adventure{
 
 	// Use this scanner for any console input
 	private static Scanner scan = new Scanner(System.in);
