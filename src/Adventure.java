@@ -189,7 +189,7 @@ public class Adventure extends AdventureStub {
 			case "DROP":
 				if (objectRefMap.containsKey(objectName)) {
 					AdvObject obj = objectRefMap.get(objectName);
-					command("GIVE", obj);
+					command("DROP", obj);
 				}
 				break;
 			case "TAKE":
