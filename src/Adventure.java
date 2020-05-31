@@ -150,13 +150,17 @@ public class Adventure extends AdventureStub {
 		this.rooms = rooms;
 		this.commands = commands;
 		setRoom(1);
-		
+//		this.inventory = new HashMap<String,AdvObject>();
 	}
 	
 	
 	
 	private void mainLoop() {
 		command("LOOK");
+//		List<AdvObject> objs = loadObjects("Small");
+//		AdvObject obj = objs.get(1);
+//		inventory.put(obj.getName(), obj);
+		
 		while (true) {
 			parseInput(scan.nextLine().toUpperCase());
 		}
@@ -327,7 +331,15 @@ public class Adventure extends AdventureStub {
 	 * what the user is carrying.
 	 */
 	public void executeInventoryCommand() {
-		super.executeInventoryCommand(); // Replace with your code
+		if(this.inventory.size() > 0) {
+			for (int i = 0; i < this.inventory.size(); i++) {
+				System.out.println(inventory.get(i));
+			}
+//		if (inventory.size() > 0) {
+//			inventory.forEach((k,v) -> System.out.println( k + ": "+ v));
+		} else {
+			System.out.println("You are empty-handed.");
+		}
 	}
 
 	/* Method: executeTakeCommand(obj) */
@@ -339,7 +351,14 @@ public class Adventure extends AdventureStub {
 	 *            The AdvObject you want to take
 	 */
 	public void executeTakeCommand(AdvObject obj) {
-		super.executeTakeCommand(obj); // Replace with your code
+		if (this.room.containsObject(obj)) {
+			this.inventory.add(obj);
+			this.room.removeObject(obj);
+			System.out.println("Object taken.");
+		} else {
+			System.out.println("Cannot take object.");
+		}
+//		super.executeTakeCommand(obj); // Replace with your code
 	}
 
 	/* Method: executeDropCommand(obj) */
@@ -351,13 +370,21 @@ public class Adventure extends AdventureStub {
 	 *            The AdvObject you want to drop
 	 */
 	public void executeDropCommand(AdvObject obj) {
-		super.executeDropCommand(obj); // Replace with your code
+		if (this.inventory.contains(obj)) {
+			this.inventory.remove(obj);
+			this.room.addObject(obj);
+			System.out.println("You have dropped the " + obj.getName() + ".");
+		} else {
+			System.out.println("Cannot drop the " + obj.getName() + ".");
+		}
+		
+//		super.executeDropCommand(obj); // Replace with your code
 	}
 
 	/* Private instance variables */
 	
 	private AdvRoom room;
 	private List<AdvRoom> rooms;
-	private Map<String,AdvObject> inventory;
+	private List<AdvObject> inventory;
 	private Map<String, AdvCommand> commands;
 }
