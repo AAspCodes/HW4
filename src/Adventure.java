@@ -389,7 +389,7 @@ public class Adventure extends AdventureStub {
 			this.room.removeObject(obj);
 			System.out.println("Object taken.");
 		} else {
-			System.out.println("Cannot take object.");
+			System.out.println("Cannot take" + obj.getName());
 		}
 
 	}
