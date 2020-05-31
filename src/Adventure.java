@@ -144,11 +144,12 @@ public class Adventure extends AdventureStub {
 			AdvRoom room = rooms.get(obj.getInitialLocation());
 			room.addObject(obj);
 		}
-		this.rooms = rooms;
-		
-		setRoom(1);
 		
 		objects.forEach((obj) -> this.objectRefMap.put(obj.getName(), obj));
+		
+		
+		this.rooms = rooms;
+		setRoom(1);
 		
 		this.commands = commands;
 
