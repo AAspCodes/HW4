@@ -380,6 +380,9 @@ public class Adventure extends AdventureStub {
 	 *            The AdvObject you want to take
 	 */
 	public void executeTakeCommand(AdvObject obj) {
+		if (obj == null) {
+			System.out.println("What would you like to take?");
+		}
 		if (this.room.containsObject(obj)) {
 			this.inventory.add(obj);
 			this.room.removeObject(obj);
@@ -399,6 +402,10 @@ public class Adventure extends AdventureStub {
 	 *            The AdvObject you want to drop
 	 */
 	public void executeDropCommand(AdvObject obj) {
+		if (obj == null) {
+			System.out.println("What would you like to drop");
+			return;
+		}
 		if (this.inventory.contains(obj)) {
 			this.inventory.remove(obj);
 			this.room.addObject(obj);
