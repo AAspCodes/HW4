@@ -76,7 +76,7 @@ public class AdvObject{
 	public static AdvObject readFromFile(Scanner scan) {
 
 		if (!scan.hasNext()) {
-			H.p("end of file");
+
 			return null;
 		}
 	

@@ -174,13 +174,12 @@ public class AdvRoom{
 	 */
 	public static AdvRoom readFromFile(Scanner scan) {
 		if (!scan.hasNext()) {
-			H.p("file ended");
 			return null;
 		}
 		
 		AdvRoom r = new AdvRoom();
 		r.roomNumber = scan.nextInt();
-		H.p(scan.nextLine());
+		scan.nextLine();
 		r.name = scan.nextLine();
 		
 		List<String> newDesc = new ArrayList<String>();
@@ -213,7 +212,8 @@ public class AdvRoom{
 			motionTable.add(entry);
 		}
 		r.motionTable = motionTable.toArray(new AdvMotionTableEntry[motionTable.size()]);
-			
+		
+		
 		return r; // Replace with your code
 	}
 
