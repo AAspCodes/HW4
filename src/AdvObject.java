@@ -96,7 +96,8 @@ public class AdvObject{
 	
 	
 	public String toString() {
-		return String.format("name: %s, desc: %s, inloc: %d", this.name, this.desc, this.roomNumber);
+		System.out.println("---Items in Inventory---");
+		return String.format("%s: %s", this.name, this.desc);
 	}
 /* Private instance variables */
 	// Add your own instance variables here
