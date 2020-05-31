@@ -216,11 +216,6 @@ public class Adventure extends AdventureStub {
 	private boolean command(String msg, AdvObject obj) {
 			AdvCommand c = commands.get(msg);
 			if (c != null) {
-				if ( c == )
-				
-				
-				
-				
 				c.execute(this, obj);
 				return true;
 			} else {
