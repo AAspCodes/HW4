@@ -231,6 +231,10 @@ public class AdvRoom{
 	
 	}
 	
+	public String toString() {
+		return String.format("roomName: %s, roomNumber: %d", this.getName(), this.getRoomNumber());
+	}
+	
 	/* Private instance variables */
 	private String name;
 	private String[] desc;
