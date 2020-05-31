@@ -38,9 +38,10 @@ public class Adventure extends AdventureStub {
 		
 		
 		
-		
+ 
 		Adventure ad = new Adventure(
 								loadRooms(input),
+								loadObjects(input),
 								createCommandMap()
 								);
 		
@@ -100,15 +101,7 @@ public class Adventure extends AdventureStub {
 		while ((newRoom = AdvRoom.readFromFile(roomScanner)) != null) {
 			rooms.add(newRoom);
 		}
-		
-		
-		List<AdvObject> objects = loadObjects(input);
-		for (AdvObject obj: objects) {
-			AdvRoom room = rooms.get(obj.getInitialLocation());
-			room.addObject(obj);
-		}
-		
-		
+
 		return rooms;
 	}
 	
@@ -145,11 +138,19 @@ public class Adventure extends AdventureStub {
 	 * @param commands
 	 * 		HashMap of AdvCommand subclass Objects
 	 */
-	private Adventure(List<AdvRoom> rooms, Map<String, AdvCommand> commands) {
+	private Adventure(List<AdvRoom> rooms,List<AdvObject> objects, Map<String, AdvCommand> commands) {
+		
+		for (AdvObject obj: objects) {
+			AdvRoom room = rooms.get(obj.getInitialLocation());
+			room.addObject(obj);
+		}
 		this.rooms = rooms;
-		this.commands = commands;
+		
 		setRoom(1);
-		loadObjects("small").forEach((obj) -> this.objectRefMap.put(obj.getName(), obj));
+		
+		objects.forEach((obj) -> this.objectRefMap.put(obj.getName(), obj));
+		
+		this.commands = commands;
 
 	}
 	
