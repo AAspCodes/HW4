@@ -404,7 +404,7 @@ public class Adventure extends AdventureStub {
 	 */
 	public void executeDropCommand(AdvObject obj) {
 		if (obj == null) {
-			System.out.println("What would you like to drop");
+			System.out.println("What would you like to drop?");
 			return;
 		}
 		if (this.inventory.contains(obj)) {
