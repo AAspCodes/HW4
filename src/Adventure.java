@@ -150,6 +150,7 @@ public class Adventure extends AdventureStub {
 		this.rooms = rooms;
 		this.commands = commands;
 		setRoom(1);
+		loadObjects("small").forEach((obj) -> this.objectRefMap.put(obj.getName(), obj));
 		
 	}
 	
@@ -360,4 +361,5 @@ public class Adventure extends AdventureStub {
 	private List<AdvRoom> rooms;
 	private Map<String,AdvObject> inventory;
 	private Map<String, AdvCommand> commands;
+	private Map<String, AdvObject> objectRefMap = new HashMap<String,AdvObject>();
 }
