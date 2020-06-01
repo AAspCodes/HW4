@@ -284,9 +284,7 @@ public class Adventure {
 			}
 		}
 		
-		setRoom(roomNum);
-		command("LOOK");
-		
+		setRoom(roomNum);	
 	}
 	
 	/**
