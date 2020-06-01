@@ -249,10 +249,8 @@ public class Adventure {
 			AdvCommand c = commands.get(msg);
 			if (c != null) {
 				c.execute(this, obj);
-				System.out.print(">> ");
 				return true;
 			} else {
-				System.out.print(">> ");
 				return false;
 			}
 	}
