@@ -407,9 +407,9 @@ public class Adventure{
 		if (this.room.containsObject(obj)) {
 			this.inventory.add(obj);
 			this.room.removeObject(obj);
-			System.out.println("Object taken.");
+			System.out.println(obj.getName() + " taken.");
 		} else {
-			System.out.println("Cannot take" + obj.getName());
+			System.out.println("Cannot take " + obj.getName());
 		}
 
 	}
