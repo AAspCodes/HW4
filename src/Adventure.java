@@ -189,11 +189,7 @@ public class Adventure{
 		if (input.equals("")) {
 			return;
 		}
-		// check if a direction
-		if (go(input)) {
-			return;
-		}
-		
+
 		String[] splitInput = input.split(" ");
 		
 		if (splitInput.length > 2) {
@@ -203,37 +199,38 @@ public class Adventure{
 		
 		String verb = splitInput[0];
 		
+		AdvObject obj = null;
+		
 		if (splitInput.length > 1) {
 			// check for object
+			// convert object name to synonym
 			String objectName = splitInput[1];
-			// check for give/ take commands
-			switch (verb) {
-			case "DROP":
-				if (objectRefMap.containsKey(objectName)) {
-					AdvObject obj = objectRefMap.get(objectName);
-					command("DROP", obj);
-				}
-				break;
-			case "TAKE":
-				if (objectRefMap.containsKey(objectName)) {
-					AdvObject obj = objectRefMap.get(objectName);
-					command("TAKE", obj);
-				}
+			if (synMap.containsKey(objectName)) {
+				objectName = synMap.get(objectName);
 			}
-			return; // the user enter two words,
-			// either the first word was not give or take,
-			// or the second word was not a valid object name
-		} else if (command(verb)) {
-				return;
+			
+			if (objectRefMap.containsKey(objectName)) {
+				obj = objectRefMap.get(objectName);
+			}
+			
+		}
+		
+		// convert verb to synonym
+		if (synMap.containsKey(verb)) {
+			verb = synMap.get(verb);
+		}
+		
+		// check if a direction
+		if (go(verb)) {
+			return;
 		}
 		
 		
 		// check if a command
-
+		if (command(verb, obj)) {
+			return;
+		}
 		
-// damn take and give...
-		
-		// else print "invalid command"
 		// couldn't parse the input
 		System.out.println("invalid input");
 	}
