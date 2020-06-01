@@ -12,7 +12,7 @@ import java.util.*;
  * This class is the main program class for the Adventure game.
  */
 
-public class Adventure{
+public class Adventure {
 
 	// Use this scanner for any console input
 	private static Scanner scan = new Scanner(System.in);
@@ -22,8 +22,6 @@ public class Adventure{
 	 */
 	public static void setScanner(Scanner theScanner) {
 		scan = theScanner;
-		// Delete the following line when done
-//		AdventureStub.setScanner(theScanner);
 	}
 
 	/**
@@ -36,16 +34,13 @@ public class Adventure{
 		String input = scan.nextLine();
 		input = input.substring(0,1).toUpperCase() + input.substring(1,input.length()).toLowerCase();
 		
-		
-		
- 
 		Adventure ad = new Adventure(
 								loadRooms(input),
 								loadObjects(input),
 								loadSynonyms(input),
 								createCommandMap()
 								);
-		
+
 		ad.mainLoop();
 		
 	}
@@ -70,8 +65,6 @@ public class Adventure{
 		}
 		
 		return synMap;
-		
-		
 	}
 	
 	/**
@@ -297,6 +290,7 @@ public class Adventure{
 		command("LOOK");
 		
 	}
+	
 	/**
 	 * this is a temporary method, it should be replaced
 	 * @param keyname
@@ -318,8 +312,6 @@ public class Adventure{
 			System.exit(0);
 			return;
 		}
-		
-		
 		room = rooms.get(roomNum);
 		command("LOOK");
 	}
@@ -437,11 +429,9 @@ public class Adventure{
 			System.out.println("Cannot drop the " + obj.getName() + ".");
 		}
 		
-
 	}
 
 	/* Private instance variables */
-	
 	private AdvRoom room;
 	private List<AdvRoom> rooms;
 	private List<AdvObject> inventory = new ArrayList<AdvObject>();
