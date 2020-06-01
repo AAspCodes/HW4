@@ -326,7 +326,7 @@ public class Adventure {
 		if ( scan.nextLine().toUpperCase().equals("Y")) {
 			// exit
 			System.out.println("ok, bye bye");
-			System.exit(0);
+			setRoom(0);
 		}
 	}
 
