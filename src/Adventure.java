@@ -163,11 +163,11 @@ public class Adventure {
 		
 		objects.forEach((obj) -> this.objectRefMap.put(obj.getName(), obj));
 		this.synMap = synMap;
+		this.commands = commands;
 		
 		this.rooms = rooms;
 		setRoom(1);
-		
-		this.commands = commands;
+
 	}
 	
 	
