@@ -42,6 +42,7 @@ public class Adventure{
 		Adventure ad = new Adventure(
 								loadRooms(input),
 								loadObjects(input),
+								loadSynonyms(input),
 								createCommandMap()
 								);
 		
@@ -49,7 +50,29 @@ public class Adventure{
 		
 	}
 	
-	
+	private static Map<String,String> loadSynonyms(String input){
+		Scanner synScanner;
+		
+		try {
+			synScanner = new Scanner(new File(input + "Synonyms.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(1);
+			return null;
+		}
+		
+		Map<String,String> synMap = new HashMap<String,String>();
+		
+		while (synScanner.hasNextLine()) {
+			String[] splitLine = synScanner.nextLine().split("=");
+			synMap.put(splitLine[0],splitLine[1]);
+		}
+		
+		return synMap;
+		
+		
+	}
 	
 	/**
 	 * Return hash map of all commands.
@@ -138,7 +161,7 @@ public class Adventure{
 	 * @param commands
 	 * 		HashMap of AdvCommand subclass Objects
 	 */
-	private Adventure(List<AdvRoom> rooms,List<AdvObject> objects, Map<String, AdvCommand> commands) {
+	private Adventure(List<AdvRoom> rooms,List<AdvObject> objects, Map<String,String> synMap, Map<String, AdvCommand> commands) {
 		// put object in their rooms
 		for (AdvObject obj: objects) {
 			AdvRoom room = rooms.get(obj.getInitialLocation());
@@ -146,7 +169,7 @@ public class Adventure{
 		}
 		
 		objects.forEach((obj) -> this.objectRefMap.put(obj.getName(), obj));
-		
+		this.synMap = synMap;
 		
 		this.rooms = rooms;
 		setRoom(1);
@@ -425,4 +448,5 @@ public class Adventure{
 	private List<AdvObject> inventory = new ArrayList<AdvObject>();
 	private Map<String, AdvCommand> commands;
 	private Map<String, AdvObject> objectRefMap = new HashMap<String,AdvObject>();
+	private Map<String, String> synMap = new HashMap<String,String>();
 }
