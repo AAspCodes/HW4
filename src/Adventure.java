@@ -181,7 +181,9 @@ public class Adventure{
 	private void mainLoop() {
 		command("LOOK");		
 		while (true) {
+			System.out.print(">>");
 			parseInput(scan.nextLine().toUpperCase());
+			
 		}
 	}
 	
