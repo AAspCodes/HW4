@@ -179,7 +179,6 @@ public class Adventure{
 	
 	
 	private void mainLoop() {
-		command("LOOK");		
 		while (true) {
 			System.out.print(">>");
 			parseInput(scan.nextLine().toUpperCase());
@@ -322,6 +321,7 @@ public class Adventure{
 		
 		
 		room = rooms.get(roomNum);
+		command("LOOK");
 	}
 	
 
