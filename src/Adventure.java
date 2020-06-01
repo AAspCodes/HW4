@@ -172,7 +172,7 @@ public class Adventure {
 	
 	
 	private void mainLoop() {
-		while (true) {
+		while (roomNumber != 0) {
 			System.out.print(">>");
 			parseInput(scan.nextLine().toUpperCase());
 			
@@ -304,10 +304,8 @@ public class Adventure {
 	}
 	
 	private void setRoom(int roomNum) {
-		if (roomNum == 0) {
-			// game ended
-			System.out.println("Thank you for playing.");
-			System.exit(0);
+		roomNumber = roomNum;
+		if (roomNumber == 0) {
 			return;
 		}
 		room = rooms.get(roomNum);
@@ -430,6 +428,7 @@ public class Adventure {
 	}
 
 	/* Private instance variables */
+	private int roomNumber;
 	private AdvRoom room;
 	private List<AdvRoom> rooms;
 	private List<AdvObject> inventory = new ArrayList<AdvObject>();
