@@ -173,6 +173,9 @@ public class Adventure {
 	
 	private void mainLoop() {
 		while (roomNumber != 0) {
+			if (go("FORCED")){
+				continue;
+			}
 			System.out.print(">>");
 			parseInput(scan.nextLine().toUpperCase());
 			
