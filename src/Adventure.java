@@ -23,7 +23,7 @@ public class Adventure{
 	public static void setScanner(Scanner theScanner) {
 		scan = theScanner;
 		// Delete the following line when done
-		AdventureStub.setScanner(theScanner);
+//		AdventureStub.setScanner(theScanner);
 	}
 
 	/**
