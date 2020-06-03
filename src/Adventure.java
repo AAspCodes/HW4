@@ -351,11 +351,8 @@ public class Adventure {
 	 * what the user is carrying.
 	 */
 	public void executeInventoryCommand() {
-		if(this.inventory.size() > 0) {
-			for (int i = 0; i < this.inventory.size(); i++) {
-				System.out.println(inventory.get(i));
-			}
-
+		if (this.inventory.size() > 0) {
+			inventory.forEach((item) -> System.out.println(item));
 		} else {
 			System.out.println("You are empty-handed.");
 		}
