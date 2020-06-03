@@ -63,23 +63,6 @@ public class Adventure {
 		return synMap;
 	}
 	
-	/**
-	 * Return hash map of all commands.
-	 * 
-	 * @return 
-	 * 		HashMap<String,AdvCommand> of all commands.
-	 */
-//	private Map<String, AdvCommand> createCommandMap() {
-//		Map<String,AdvCommand> commands = new HashMap<String, AdvCommand>();
-//		commands.put("QUIT", AdvCommand.QUIT);
-//		commands.put("LOOK", AdvCommand.LOOK);
-//		commands.put("INVENTORY", AdvCommand.INVENTORY);
-//		commands.put("TAKE", AdvCommand.TAKE);
-//		commands.put("DROP", AdvCommand.DROP);
-//		commands.put("HELP", AdvCommand.HELP);
-//		return commands;
-//	}
-	
 	
 	/**
 	 * Load the the AdvRoom data from the {input}Rooms.txt file into an ArrayList of AdvRoom objects.
@@ -164,7 +147,6 @@ public class Adventure {
 		}
 		
 		this.synMap = loadSynMap(input);
-//		this.commands = createCommandMap();
 		
 		setRoom(1);
 	}
@@ -258,7 +240,6 @@ public class Adventure {
 	}
 	
 
-
 	/* Method: executeMotionCommand(direction) */
 	/**
 	 * Executes a motion command. This method is called from the
@@ -313,7 +294,6 @@ public class Adventure {
 	}
 	
 
-
 	/* Method: executeQuitCommand() */
 	/**
 	 * Implements the QUIT command. This command should ask the user to confirm
@@ -352,8 +332,7 @@ public class Adventure {
 			System.out.println(hScan.nextLine());
 		}
 		
-		hScan.close();
-		
+		hScan.close();	
 	}
 
 	/* Method: executeLookCommand() */
@@ -401,7 +380,6 @@ public class Adventure {
 		} else {
 			System.out.println("Cannot take " + obj.getName());
 		}
-
 	}
 
 	/* Method: executeDropCommand(obj) */
@@ -432,7 +410,6 @@ public class Adventure {
 	private AdvRoom room;
 	private List<AdvRoom> rooms;
 	private List<AdvObject> inventory = new ArrayList<AdvObject>();
-	
 	private Map<String, AdvObject> objectRefMap = new HashMap<String,AdvObject>();
 	private Map<String, String> synMap = new HashMap<String,String>();
 	
