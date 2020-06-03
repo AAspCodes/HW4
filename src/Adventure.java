@@ -146,7 +146,7 @@ public class Adventure {
 			
 		}
 		
-		this.synMap = loadSynMap(input);
+		synMap = loadSynMap(input);
 		
 		setRoom(1);
 	}
