@@ -198,7 +198,7 @@ public class Adventure {
 			verb = synMap.get(verb);
 		}
 		
-		// check if a direction
+		// check if verb is a direction
 		if (go(verb)) {
 			return;
 		}
