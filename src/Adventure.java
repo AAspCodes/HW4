@@ -256,7 +256,7 @@ public class Adventure {
 			if (direction.equals(entry.getDirection())) {
 				
 				if (entry.getKeyName() != null && !haveKey(entry.getKeyName())){
-				
+					
 						// key was needed, and you don't have the key
 						continue;
 				} else {
@@ -271,17 +271,12 @@ public class Adventure {
 	}
 	
 	/**
-	 * this is a temporary method, it should be replaced
+	 * check if you have the key needed
 	 * @param keyname
 	 * @return
 	 */
 	private boolean haveKey(String keyName) {
-		for (AdvObject obj: inventory) {
-			if ( obj.getName().equals(keyName)) {
-				return true;
-			}
-		}
-		return false;
+		return inventory.contains(objectRefMap.get(keyName));
 	}
 	
 	private void setRoom(int roomNum) {
