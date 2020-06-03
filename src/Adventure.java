@@ -103,7 +103,7 @@ public class Adventure {
 	private List<AdvObject> loadObjects(String input) {
 		Scanner objScanner;
 		
-		// load rooms Data into scanner
+		// load object Data into scanner
 		try {
 			objScanner = new Scanner(new File(input + "Objects.txt"));
 		} catch (FileNotFoundException e) {
