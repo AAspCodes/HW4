@@ -47,7 +47,7 @@ public class Adventure {
 		try {
 			synScanner = new Scanner(new File(input + "Synonyms.txt"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 			System.exit(1);
 			return null;
