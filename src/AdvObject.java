@@ -96,7 +96,6 @@ public class AdvObject{
 	
 	
 	public String toString() {
-		System.out.println("---Items in Inventory---");
 		return String.format("%s: %s", this.name, this.desc);
 	}
 /* Private instance variables */

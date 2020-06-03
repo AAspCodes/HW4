@@ -347,6 +347,7 @@ public class Adventure {
 	 */
 	public void executeInventoryCommand() {
 		if (this.inventory.size() > 0) {
+			System.out.println("---Items in Inventory---");
 			inventory.forEach((item) -> System.out.println(item));
 		} else {
 			System.out.println("You are empty-handed.");
