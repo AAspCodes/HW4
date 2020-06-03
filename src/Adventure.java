@@ -69,16 +69,16 @@ public class Adventure {
 	 * @return 
 	 * 		HashMap<String,AdvCommand> of all commands.
 	 */
-	private Map<String, AdvCommand> createCommandMap() {
-		Map<String,AdvCommand> commands = new HashMap<String, AdvCommand>();
-		commands.put("QUIT", AdvCommand.QUIT);
-		commands.put("LOOK", AdvCommand.LOOK);
-		commands.put("INVENTORY", AdvCommand.INVENTORY);
-		commands.put("TAKE", AdvCommand.TAKE);
-		commands.put("DROP", AdvCommand.DROP);
-		commands.put("HELP", AdvCommand.HELP);
-		return commands;
-	}
+//	private Map<String, AdvCommand> createCommandMap() {
+//		Map<String,AdvCommand> commands = new HashMap<String, AdvCommand>();
+//		commands.put("QUIT", AdvCommand.QUIT);
+//		commands.put("LOOK", AdvCommand.LOOK);
+//		commands.put("INVENTORY", AdvCommand.INVENTORY);
+//		commands.put("TAKE", AdvCommand.TAKE);
+//		commands.put("DROP", AdvCommand.DROP);
+//		commands.put("HELP", AdvCommand.HELP);
+//		return commands;
+//	}
 	
 	
 	/**
@@ -164,7 +164,7 @@ public class Adventure {
 		}
 		
 		this.synMap = loadSynMap(input);
-		this.commands = createCommandMap();
+//		this.commands = createCommandMap();
 		
 		setRoom(1);
 	}
@@ -432,7 +432,22 @@ public class Adventure {
 	private AdvRoom room;
 	private List<AdvRoom> rooms;
 	private List<AdvObject> inventory = new ArrayList<AdvObject>();
-	private Map<String, AdvCommand> commands;
+	
 	private Map<String, AdvObject> objectRefMap = new HashMap<String,AdvObject>();
 	private Map<String, String> synMap = new HashMap<String,String>();
+	
+	// private static variables
+	
+	private static Map<String,AdvCommand> commands;
+	
+	static {
+		commands = new HashMap<String, AdvCommand>();
+		commands.put("QUIT", AdvCommand.QUIT);
+		commands.put("LOOK", AdvCommand.LOOK);
+		commands.put("INVENTORY", AdvCommand.INVENTORY);
+		commands.put("TAKE", AdvCommand.TAKE);
+		commands.put("DROP", AdvCommand.DROP);
+		commands.put("HELP", AdvCommand.HELP);
+	}
+	
 }
