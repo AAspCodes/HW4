@@ -34,18 +34,14 @@ public class Adventure {
 		String input = scan.nextLine();
 		input = input.substring(0,1).toUpperCase() + input.substring(1,input.length()).toLowerCase();
 		
-		Adventure ad = new Adventure(
-								loadRooms(input),
-								loadObjects(input),
-								loadSynonyms(input),
-								createCommandMap()
-								);
+		Adventure ad = new Adventure(input);
+
 
 		ad.mainLoop();
 		
 	}
 	
-	private static Map<String,String> loadSynonyms(String input){
+	private Map<String,String> loadSynMap(String input){
 		Scanner synScanner;
 		
 		try {
@@ -73,7 +69,7 @@ public class Adventure {
 	 * @return 
 	 * 		HashMap<String,AdvCommand> of all commands.
 	 */
-	private static Map<String, AdvCommand> createCommandMap() {
+	private Map<String, AdvCommand> createCommandMap() {
 		Map<String,AdvCommand> commands = new HashMap<String, AdvCommand>();
 		commands.put("QUIT", AdvCommand.QUIT);
 		commands.put("LOOK", AdvCommand.LOOK);
@@ -94,7 +90,7 @@ public class Adventure {
 	 * @return
 	 * 		ArrayList<AdvRoom> of Rooms
 	 */
-	private static List<AdvRoom> loadRooms(String input) {
+	private List<AdvRoom> loadRooms(String input) {
 		Scanner roomScanner;
 		
 		// load rooms Data into scanner
@@ -121,7 +117,7 @@ public class Adventure {
 		return rooms;
 	}
 	
-	private static List<AdvObject> loadObjects(String input) {
+	private List<AdvObject> loadObjects(String input) {
 		Scanner objScanner;
 		
 		// load rooms Data into scanner
@@ -154,20 +150,26 @@ public class Adventure {
 	 * @param commands
 	 * 		HashMap of AdvCommand subclass Objects
 	 */
-	private Adventure(List<AdvRoom> rooms,List<AdvObject> objects, Map<String,String> synMap, Map<String, AdvCommand> commands) {
-		// put object in their rooms
-		for (AdvObject obj: objects) {
+	private Adventure(String input) {
+		rooms = loadRooms(input);
+		
+		
+		for (AdvObject obj: loadObjects(input)) {
+			// put object in their rooms
 			AdvRoom room = rooms.get(obj.getInitialLocation());
 			room.addObject(obj);
+			
+			
+			// add objects to ref map for lookup
+			objectRefMap.put(obj.getName(),obj);
+			
 		}
 		
-		objects.forEach((obj) -> this.objectRefMap.put(obj.getName(), obj));
-		this.synMap = synMap;
-		this.commands = commands;
+		this.synMap = loadSynMap(input);
+		this.commands = createCommandMap();
 		
-		this.rooms = rooms;
-		setRoom(1);
 
+		setRoom(1);
 	}
 	
 	
