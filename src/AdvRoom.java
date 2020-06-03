@@ -219,12 +219,12 @@ public class AdvRoom{
 
 	
 	public void look() {
-		for (String line: this.getDescription()) {
+		for (String line: getDescription()) {
 			System.out.println(line);
 		}
 		if (this.getObjectCount() > 0) {
 			
-			for (AdvObject obj: this.objectList) {
+			for (AdvObject obj: objectList) {
 				System.out.println("I see " + obj.getDescription());
 			}
 		}
