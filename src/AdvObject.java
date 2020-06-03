@@ -80,10 +80,10 @@ public class AdvObject{
 			return null;
 		}
 	
-		AdvObject o = new AdvObject();
-		o.name = scan.nextLine();
-		o.desc = scan.nextLine();
-		o.roomNumber = scan.nextInt();
+		AdvObject obj = new AdvObject();
+		obj.name = scan.nextLine();
+		obj.desc = scan.nextLine();
+		obj.roomNumber = scan.nextInt();
 		
 		// clean up white space
 		scan.nextLine();
@@ -91,7 +91,7 @@ public class AdvObject{
 			scan.nextLine();
 		}
 
-		return o; // Replace with your code
+		return obj; // Replace with your code
 	}
 	
 	
