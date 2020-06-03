@@ -60,6 +60,7 @@ public class Adventure {
 			synMap.put(splitLine[0],splitLine[1]);
 		}
 		
+		synScanner.close();
 		return synMap;
 	}
 	
@@ -96,7 +97,7 @@ public class Adventure {
 		while ((newRoom = AdvRoom.readFromFile(roomScanner)) != null) {
 			rooms.add(newRoom);
 		}
-
+		roomScanner.close();
 		return rooms;
 	}
 	
@@ -118,7 +119,7 @@ public class Adventure {
 		while ((newObject = AdvObject.readFromFile(objScanner)) != null) {
 			objects.add(newObject);
 		}
-		
+		objScanner.close();
 		return objects;
 	}
 	
