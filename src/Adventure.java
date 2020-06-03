@@ -210,7 +210,7 @@ public class Adventure {
 		}
 		
 		// couldn't parse the input
-		System.out.println("invalid input");
+		System.out.println("invalid command");
 	}
 	
 	private boolean go(String msg) {	
