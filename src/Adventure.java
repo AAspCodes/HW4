@@ -81,7 +81,6 @@ public class Adventure {
 		try {
 			roomScanner = new Scanner(new File(input + "Rooms.txt"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 			return null;
