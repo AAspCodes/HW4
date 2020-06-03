@@ -288,9 +288,10 @@ public class Adventure {
 		roomNumber = roomNum;
 		if (roomNumber == 0) {
 			return;
+		} else {
+			room = rooms.get(roomNum);
+			command("LOOK");
 		}
-		room = rooms.get(roomNum);
-		command("LOOK");
 	}
 	
 
