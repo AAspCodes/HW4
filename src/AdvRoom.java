@@ -177,19 +177,19 @@ public class AdvRoom{
 			return null;
 		}
 		
-		AdvRoom r = new AdvRoom();
-		r.roomNumber = scan.nextInt();
+		AdvRoom room = new AdvRoom();
+		room.roomNumber = scan.nextInt();
 		scan.nextLine();
-		r.name = scan.nextLine();
+		room.name = scan.nextLine();
 		
 		List<String> newDesc = new ArrayList<String>();
 		String line;
 		while (!(line = scan.nextLine()).equals("-----")) {
 			newDesc.add(line);
 		}
-		r.desc = newDesc.toArray(new String[newDesc.size()]);
+		room.desc = newDesc.toArray(new String[newDesc.size()]);
 		
-		r.beenVisited = false;
+		room.beenVisited = false;
 		
 		List<AdvMotionTableEntry> motionTable = new ArrayList<AdvMotionTableEntry>();
 		while ((scan.hasNext()) && !(line = scan.nextLine()).equals("")) {
@@ -211,10 +211,10 @@ public class AdvRoom{
 			AdvMotionTableEntry entry = new AdvMotionTableEntry(name, roomNum, key);
 			motionTable.add(entry);
 		}
-		r.motionTable = motionTable.toArray(new AdvMotionTableEntry[motionTable.size()]);
+		room.motionTable = motionTable.toArray(new AdvMotionTableEntry[motionTable.size()]);
 		
 		
-		return r; // Replace with your code
+		return room; 
 	}
 
 	
