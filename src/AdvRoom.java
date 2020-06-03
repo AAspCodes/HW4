@@ -222,7 +222,7 @@ public class AdvRoom{
 		for (String line: getDescription()) {
 			System.out.println(line);
 		}
-		if (this.getObjectCount() > 0) {
+		if (getObjectCount() > 0) {
 			
 			for (AdvObject obj: objectList) {
 				System.out.println("I see " + obj.getDescription());
@@ -232,7 +232,7 @@ public class AdvRoom{
 	}
 	
 	public String toString() {
-		return String.format("roomName: %s, roomNumber: %d", this.getName(), this.getRoomNumber());
+		return String.format("roomName: %s, roomNumber: %d", getName(), getRoomNumber());
 	}
 	
 	/* Private instance variables */
