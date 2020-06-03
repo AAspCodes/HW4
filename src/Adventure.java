@@ -153,12 +153,10 @@ public class Adventure {
 	private Adventure(String input) {
 		rooms = loadRooms(input);
 		
-		
 		for (AdvObject obj: loadObjects(input)) {
 			// put object in their rooms
 			AdvRoom room = rooms.get(obj.getInitialLocation());
 			room.addObject(obj);
-			
 			
 			// add objects to ref map for lookup
 			objectRefMap.put(obj.getName(),obj);
@@ -168,11 +166,10 @@ public class Adventure {
 		this.synMap = loadSynMap(input);
 		this.commands = createCommandMap();
 		
-
 		setRoom(1);
 	}
 	
-	
+
 	private void mainLoop() {
 		while (roomNumber != 0) {
 			if (go("FORCED")){
